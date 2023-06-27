@@ -51,7 +51,7 @@ userSchema.methods = {
   // compare password
   comparePassword: async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
-  },
+  }, 
   //   generate jwt token
   getJWTtoken: function () {
     jwt.sign({ _id: this._id }, config.JWT_SECRET, {
