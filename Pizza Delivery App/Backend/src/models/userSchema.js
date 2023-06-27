@@ -7,16 +7,12 @@ import crypto from "crypto";
 
 const userSchema = new mongoose.Schema(
   {
-    fname: {
+    name: {
       type: String,
-      required: [true, "Firstname is Required"],
-      maxLength: [50, "Firstname must be less than 50 chars"],
+      required: [true, "Name is Required"],
+      maxLength: [50, "Name must be less than 50 chars"],
     },
-    lname: {
-      type: String,
-      required: [true, "Lastname is Required"],
-      maxLength: [50, "Lastname must be less than 50 chars"],
-    },
+
     email: {
       type: String,
       required: [true, "Email is required"],
@@ -51,7 +47,7 @@ userSchema.methods = {
   // compare password
   comparePassword: async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
-  }, 
+  },
   //   generate jwt token
   getJWTtoken: function () {
     jwt.sign({ _id: this._id }, config.JWT_SECRET, {
